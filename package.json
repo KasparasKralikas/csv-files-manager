@@ -1,0 +1,24 @@
+{
+  "name": "csv-files-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./server/index.js",
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "start-client": "cd client && npm run start",
+    "start": "node ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KasparasKralikas/csv-files-manager.git"
+  },
+  "author": "Kasparas Kralikas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KasparasKralikas/csv-files-manager/issues"
+  },
+  "homepage": "https://github.com/KasparasKralikas/csv-files-manager#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
