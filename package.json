@@ -5,6 +5,7 @@
   "main": "./server/index.js",
   "scripts": {
     "build": "cd client && npm install && npm run build",
+    "test": "jest --coverage",
     "start-client": "cd client && npm run start",
     "start": "node ./server/index.js"
   },
@@ -21,6 +22,7 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "express": "^4.17.1",
-    "firebase-admin": "^9.9.0"
+    "firebase-admin": "^9.9.0",
+    "jest": "^27.0.4"
   }
 }
