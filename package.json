@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/KasparasKralikas/csv-files-manager#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.9.0"
   }
 }
