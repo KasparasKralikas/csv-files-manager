@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CSVUploader from './components/CSVUploader';
+import TableView from './components/TableView';
 
 function App() {
+
+  const [data, setData] = useState();
+
   return (
     <div>
-      <CSVUploader/>
+      <CSVUploader setData={setData}/>
+      <TableView data={data}/>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { CSVReader } from 'react-papaparse';
 import Button from '@material-ui/core/Button';
 
-function CSVUploader() {
+function CSVUploader({ setData }) {
 
     const buttonRef = React.createRef();
 
@@ -12,7 +12,8 @@ function CSVUploader() {
         }
     };
 
-    const handleOnFileLoad = (data) => {
+    const handleOnFileChange = (data) => {
+        setData(data);
         console.log(data);
     };
 
@@ -21,6 +22,7 @@ function CSVUploader() {
     };
 
     const handleOnRemoveFile = (data) => {
+        setData(data);
         console.log(data);
     };
 
@@ -33,11 +35,11 @@ function CSVUploader() {
     return (
         <CSVReader
             ref={buttonRef}
-            onFileLoad={handleOnFileLoad}
+            onFileLoad={handleOnFileChange}
             onError={handleOnError}
             noClick
             noDrag
-            onRemoveFile={handleOnRemoveFile}
+            onRemoveFile={handleOnFileChange}
         >
             {({ file }) => (
                 <aside
