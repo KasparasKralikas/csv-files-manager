@@ -32,6 +32,7 @@ module.exports = class TableManager {
     async getTableNames() {
         const result = await this.collection.get();
         const names = result.docs.map(doc => doc.data().name);
+        console.log(names);
         return names;
     }
     
