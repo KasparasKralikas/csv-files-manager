@@ -4,6 +4,8 @@ const TableManager = require('./tableManager.js');
 
 const PORT = process.env.PORT || 8080;
 
+const SERVER_SIDE_ERROR_MESSAGE = 'Something went wrong on the server side...';
+
 const app = express();
 
 const tableManager = new TableManager();
@@ -18,7 +20,7 @@ app.get('/api/tables', async (_req, res) => {
     res.status(200).json(names);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: 'Something went wrong on the server side...' });
+    res.status(500).json({ message: SERVER_SIDE_ERROR_MESSAGE });
   }
 });
 
@@ -32,12 +34,23 @@ app.get('/api/table/:name', async (req, res) => {
     res.status(200).json(table);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: 'Something went wrong on the server side...' });
+    res.status(500).json({ message: SERVER_SIDE_ERROR_MESSAGE });
   }
 });
 
 app.post('/api/table/:name', async (req, res) => {
-
+  try {
+    if (!req.body.hasOwnProperty('data')) {
+      res.status(400).json({ message: 'Request body must contain data property' });
+    }
+    const name = req.params.name;
+    const data = req.body.data;
+    await tableManager.createTable(name, data);
+    res.status(200).send();
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: SERVER_SIDE_ERROR_MESSAGE });
+  }
 });
 
 app.get('*', (_req, res) => {
