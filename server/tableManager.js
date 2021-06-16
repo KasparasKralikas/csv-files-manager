@@ -23,6 +23,17 @@ module.exports = class TableManager {
         };
         await this.collection.doc(name).set(tableDoc);
     }
+
+    async getTable(name) {
+        const doc = await this.collection.doc(name).get();
+        return doc.exists ? doc.data() : null;
+    }
+
+    async getTableNames() {
+        const result = await this.collection.get();
+        const names = result.docs.map(doc => doc.data().name);
+        return names;
+    }
     
     getHashFromName(name, algorithm = 'sha1') {
         const hash = crypto.createHash(algorithm).update(name).digest('hex');
