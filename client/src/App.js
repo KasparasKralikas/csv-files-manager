@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import TableView from './components/TableView';
 import TableSelector from './components/TableSelector';
 
@@ -58,7 +59,7 @@ function App() {
     <div>
       <AppBar position="static" color="transparent">
         <Toolbar>
-        <Button onClick={handleTableNameClick} variant="contained" color="primary" style={{
+          <Button onClick={handleTableNameClick} variant="contained" color="primary" style={{
             marginRight: "20px",
             width: "150px"
           }}>
@@ -68,7 +69,9 @@ function App() {
         </Toolbar>
       </AppBar>
       <TableSelector tableSelectorDialogOpen={tableSelectorDialogOpen} setTableSelectorDialogOpen={setTableSelectorDialogOpen} data={data} setData={setData} postTable={postTable} tableNames={tableNames} getTable={getTable} />
-      <TableView data={data} />
+      <Box m={2}>
+        <TableView data={data} />
+      </Box>
     </div>
   );
 }

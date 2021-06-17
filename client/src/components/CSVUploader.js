@@ -48,13 +48,15 @@ function CSVUploader({ setData }) {
                         Browse files
                     </Button>
                     <div style={{
-                        minWidth: '150px'
+                        margin: "10px",
+                        minWidth: "200px"
                     }}>
                         {file && file.name}
                     </div>
-                    <Button variant="contained" color="secondary" onClick={handleRemoveFile}>
+                    <Button variant="contained" color="secondary" onClick={handleRemoveFile} disabled={file ? false : true}>
                         Remove
                     </Button>
+
                 </aside>
             )}
         </CSVReader>
