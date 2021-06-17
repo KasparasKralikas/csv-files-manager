@@ -31,7 +31,7 @@ function TableSelector({ tableSelectorDialogOpen, setTableSelectorDialogOpen, da
             <Button variant="contained" color="primary" disabled={inputTableName && data ? false : true} onClick={handleUploadClick}>Upload Table</Button>
             <DialogTitle>Or Select Existing Table:</DialogTitle>
             <List>
-                {tableNames.map(name => <ListItem button onClick={() => handleListItemClick(name)}>{name}</ListItem>)}
+                { tableNames ? tableNames.map(name => <ListItem button onClick={() => handleListItemClick(name)} key={name}>{name}</ListItem>) : "No tables found"}
             </List>
         </Dialog>
     );

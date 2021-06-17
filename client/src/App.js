@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import TableView from './components/TableView';
 import TableSelector from './components/TableSelector';
 
@@ -45,9 +49,25 @@ function App() {
     });
   };
 
+  const handleTableNameClick = () => {
+    console.log()
+    setTableSelectorDialogOpen(true);
+  }
+
   return (
     <div>
-      <TableSelector tableSelectorDialogOpen={tableSelectorDialogOpen} setTableSelectorDialogOpen={setTableSelectorDialogOpen} data={data} setData={setData} postTable={postTable} tableNames={tableNames} getTable={getTable}/>
+      <AppBar position="static" color="transparent">
+        <Toolbar>
+        <Button onClick={handleTableNameClick} variant="contained" color="primary" style={{
+            marginRight: "20px",
+            width: "150px"
+          }}>
+            Browse
+          </Button>
+          <Typography>{name ? name : "No table selected..."}</Typography>
+        </Toolbar>
+      </AppBar>
+      <TableSelector tableSelectorDialogOpen={tableSelectorDialogOpen} setTableSelectorDialogOpen={setTableSelectorDialogOpen} data={data} setData={setData} postTable={postTable} tableNames={tableNames} getTable={getTable} />
       <TableView data={data} />
     </div>
   );
