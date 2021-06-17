@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import CSVUploader from './components/CSVUploader';
 import TableView from './components/TableView';
+import TableSelector from './components/TableSelector';
 
 function App() {
 
   const [data, setData] = useState();
   const [name, setName] = useState();
   const [tableNames, setTableNames] = useState();
+  const [tableSelectorDialogOpen, setTableSelectorDialogOpen] = useState(true);
 
   useEffect(() => {
     getTables();
@@ -46,7 +47,7 @@ function App() {
 
   return (
     <div>
-      <CSVUploader setData={setData} />
+      <TableSelector tableSelectorDialogOpen={tableSelectorDialogOpen} setTableSelectorDialogOpen={setTableSelectorDialogOpen} data={data} setData={setData} postTable={postTable}/>
       <TableView data={data} />
     </div>
   );

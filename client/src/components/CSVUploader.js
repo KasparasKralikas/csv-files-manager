@@ -47,7 +47,9 @@ function CSVUploader({ setData }) {
                     <Button variant="contained" color="primary" onClick={handleOpenDialog}>
                         Browse files
                     </Button>
-                    <div>
+                    <div style={{
+                        minWidth: '150px'
+                    }}>
                         {file && file.name}
                     </div>
                     <Button variant="contained" color="secondary" onClick={handleRemoveFile}>
