@@ -18,6 +18,7 @@ function App() {
     axios.get(`/api/table/${name}`).then(res => {
       setData(res.data.data);
       setName(res.data.name);
+      setTableSelectorDialogOpen(false);
     }).catch(error => {
       // TODO: add alert that displays the error
       console.log(error);
@@ -26,7 +27,6 @@ function App() {
 
   const getTables = () => {
     axios.get(`/api/tables`).then(res => {
-      console.log(res);
       setTableNames(res.data);
     }).catch(error => {
       // TODO: add alert that displays the error
@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div>
-      <TableSelector tableSelectorDialogOpen={tableSelectorDialogOpen} setTableSelectorDialogOpen={setTableSelectorDialogOpen} data={data} setData={setData} postTable={postTable}/>
+      <TableSelector tableSelectorDialogOpen={tableSelectorDialogOpen} setTableSelectorDialogOpen={setTableSelectorDialogOpen} data={data} setData={setData} postTable={postTable} tableNames={tableNames} getTable={getTable}/>
       <TableView data={data} />
     </div>
   );
