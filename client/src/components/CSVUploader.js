@@ -21,11 +21,6 @@ function CSVUploader({ setData }) {
         console.log(err);
     };
 
-    const handleOnRemoveFile = (data) => {
-        setData(data);
-        console.log(data);
-    };
-
     const handleRemoveFile = (e) => {
         if (buttonRef.current) {
             buttonRef.current.removeFile(e);
